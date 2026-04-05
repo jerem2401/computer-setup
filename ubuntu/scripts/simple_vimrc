@@ -1,0 +1,57 @@
+" to get proper setup according to server
+let hostname=system("hostname -s | tr -d '\n'")
+
+" Enable syntax
+:syntax on
+
+" set clipboard=unnamed,unnamedplus
+set hlsearch
+" map :noh, which clear search hilight
+nnoremap <silent> ,<space> :nohlsearch<CR>
+
+" shortcut for leaving insert mode
+inoremap jj <ESC>
+
+" show line numbers and lenght
+set number
+" set tw=79
+set colorcolumn=100
+
+" status line
+" display file name
+set laststatus=2
+" set statusline=%F "tail of the filename
+set statusline=
+set statusline+=%#DiffAdd#%{(mode()=='n')?'\ \ NORMAL\ ':''}
+set statusline+=%#DiffChange#%{(mode()=='i')?'\ \ INSERT\ ':''}
+set statusline+=%#DiffDelete#%{(mode()=='r')?'\ \ RPLACE\ ':''}
+set statusline+=%#Cursor#%{(mode()=='v')?'\ \ VISUAL\ ':''}
+set statusline+=\ %n\           " buffer number
+set statusline+=%#Visual#       " colour
+set statusline+=%{&paste?'\ PASTE\ ':''}
+set statusline+=%{&spell?'\ SPELL\ ':''}
+set statusline+=%#CursorIM#     " colour
+set statusline+=%R                        " readonly flag
+set statusline+=%M                        " modified [+] flag
+set statusline+=%#Cursor#               " colour
+set statusline+=%#CursorLine#     " colour
+set statusline+=\ %F\                   " long file name isntead of %t for short
+set statusline+=%=                          " right align
+set statusline+=%#CursorLine#   " colour
+set statusline+=\ %Y\                   " file type
+set statusline+=%#CursorIM#     " colour
+set statusline+=\ %3l:%-2c\         " line + column
+set statusline+=%#Cursor#       " colour
+set statusline+=\ %3p%%\                " percentage
+
+
+" system clipboard for wayland display server, wl-clipboard must be installed first: sudo apt-get update, sudo apt-get install wl-clipboard 
+let serverdisp = $XDG_SESSION_TYPE
+if serverdisp == 'wayland'
+    xnoremap "+y y:call system("wl-copy", @")<cr>
+    nnoremap "+p :let @"=substitute(system("wl-paste --no-newline"), '<C-v><C-m>', '', 'g')<cr>p
+    nnoremap "*p :let @"=substitute(system("wl-paste --no-newline --primary"), '<C-v><C-m>', '', 'g')<cr>p
+else
+    xnoremap "+y y:call system("xclip -sel clip", @")<cr>
+    nnoremap "+p :let @"=substitute(system("xclip -sel clip -o"), '<C-v><C-m>', '', 'g')<cr>p
+endif
