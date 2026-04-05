@@ -1,4 +1,4 @@
-1. get personal scripts/settings from github
+## 1. get personal scripts/settings from github
 
 - install git
 - create ssh key
@@ -6,7 +6,7 @@
 - create `~/gitrepo` directory as root dir for git repos
 - clone this repo: `git clone git@github.com:jerem2401/computer-setup.git ~/gitrepo/computer-setup`
 
-2. bashrc
+## 2. bashrc
 
 Check current .bashrc and make sure the following setups are added and conflicting existing settings are commented (and put to the end of the .bashrc):
 
@@ -64,7 +64,7 @@ source ~/gitrepo/computer-setup/ubuntu/scripts/acd_func.sh
 PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\n'
 ```
 
-3. inputrc
+## 3. inputrc
 
 - create or edit the ~/.inputrc such that I can up/down arrow history:
 
@@ -73,7 +73,7 @@ PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[0
 "\e[B": history-search-forward
 ```
 
-4. cursor
+## 4. cursor
 
 - install cursor
 - import settings or setup the following:
@@ -98,14 +98,16 @@ PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[0
 - deactivate git ctrl+K keybinding if sets to avoid conflict with AI generation
 
 
-5. VIM
+## 5. VIM
 
 - install vim
-- symlink my .simple_vimrc present in my "scripts" folder cloned earlier
+- symlink my `simple_vimrc` present in my "scripts" folder cloned earlier to ~/.vimrc
+- if on wayland: install `wl-clipboard`, else `xlclip`
+
 
 6. battery setting
 
 - if my gnome version allows it out of the box set my battery start charge at 50% and end charge at 80%
 - else use tlp (ideally make small bash script that allows to quickly swing from 50%-80% to 80%-95% so I can edit quicly when travelling from my terminal)
 
-7.
+## 7.
