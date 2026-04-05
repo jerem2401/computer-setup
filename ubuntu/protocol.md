@@ -4,11 +4,11 @@
 - create ssh key
 - add ssh agent
 - create `~/gitrepo` directory as root dir for git repos
-- clone my scripts repo: `git clone git@github.com:jerem2401/scripts.git ~/gitrepo/scripts`
+- clone this repo: `git clone git@github.com:jerem2401/computer-setup.git ~/gitrepo/computer-setup`
 
 2. bashrc
 
-Check current .bashrc and make sure the following setups are added and conflicting present settings are commented (and put to the end of the .bashrc):
+Check current .bashrc and make sure the following setups are added and conflicting existing settings are commented (and put to the end of the .bashrc):
 
 ```
 # -------------------------------
@@ -58,7 +58,10 @@ bind "set show-all-if-ambiguous on"
 #disabling highlight when pasting in terminal (default is 'on' now from bash 5.1)
 bind 'set enable-bracketed-paste off'
 #get older directories that just the previous one with cd-
-source ~/gitrepo/scripts/unix/acd_func.sh
+source ~/gitrepo/computer-setup/ubuntu/scripts/acd_func.sh
+
+# prompt with new line for easy triple-click commands
+PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\n'
 ```
 
 3. inputrc
@@ -76,18 +79,21 @@ source ~/gitrepo/scripts/unix/acd_func.sh
 - import settings or setup the following:
     - "terminal.integrated.middleClickBehavior": "paste"
     - "terminal.integrated.copyOnSelection": true
+    - "cursor.cpp.enablePartialAccepts": true
     - install vim extension
     - allows "jj" escape in insert mode by adding the following config:
-    - install "Gruvbox Theme", and set theme to "light soft"
 
-```
-"vim.insertModeKeyBindings": [
-    {
-        "before": ["j", "j"],
-        "after": ["<Esc>"]
-    }
-],
-```
+      ```
+      "vim.insertModeKeyBindings": [
+          {
+              "before": ["j", "j"],
+              "after": ["<Esc>"]
+          }
+      ],
+      "vim.useSystemClipboard": true
+      ```
+
+    - install "Gruvbox Theme", and set theme to "light soft"
 
 - deactivate git ctrl+K keybinding if sets to avoid conflict with AI generation
 
@@ -95,7 +101,7 @@ source ~/gitrepo/scripts/unix/acd_func.sh
 5. VIM
 
 - install vim
-- symlink my .simple_vimrc prsent in my git repo "scripts" cloned earlier
+- symlink my .simple_vimrc present in my "scripts" folder cloned earlier
 
 6. battery setting
 
