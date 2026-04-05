@@ -1,6 +1,6 @@
 ## 1. get personal scripts/settings from github
 
-- install git
+- install git (config user.name and user.email globally)
 - create ssh key
 - add ssh agent
 - create `~/gitrepo` directory as root dir for git repos
