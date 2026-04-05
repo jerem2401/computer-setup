@@ -5,6 +5,7 @@
 - add ssh agent
 - create `~/gitrepo` directory as root dir for git repos
 - clone this repo: `git clone git@github.com:jerem2401/computer-setup.git ~/gitrepo/computer-setup`
+- symlink ~/.gitconfig from `~/gitrepo/computer-setup/ubuntu/config/gitconfig`
 
 ## 2. bashrc
 
@@ -92,6 +93,7 @@ PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[0
       ],
       "vim.useSystemClipboard": true
       ```
+    - remove ctrl+B vim keybinding to avoid conflict with left panel toggle
 
     - install "Gruvbox Theme", and set theme to "light soft"
 

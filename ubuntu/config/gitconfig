@@ -1,0 +1,15 @@
+[init]
+	defaultBranch = main
+[user]
+	email = lapierre.jeremy@gmail.com
+	name = jerem2401
+[merge]
+	tool = cursor
+[core]
+	editor = cursor --wait --new-window
+[difftool "cursor"]
+	cmd = cursor --wait --diff $LOCAL $REMOTE
+[diff]
+	tool = cursor
+[mergetool "cursor"]
+	cmd = cursor --wait $MERGED
